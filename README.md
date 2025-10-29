@@ -4,6 +4,7 @@ Production-grade FastAPI server powered by Claude AI for code execution, analysi
 
 ## ✨ Features
 
+### Claude Code Server
 - **Code Execution**: Execute code in multiple languages via Claude AI
 - **Code Analysis**: Get security, performance, and best practices feedback
 - **AI Chat**: Interactive chat with Claude for coding questions
@@ -14,6 +15,14 @@ Production-grade FastAPI server powered by Claude AI for code execution, analysi
 - **Input Validation**: Robust request validation with Pydantic
 - **Async/Await**: Fully async for maximum performance
 - **Production Ready**: Docker, systemd, and logging included
+
+### 🎵 Vibe Chat
+- **Dual AI Interface**: Chat with both Claude and GitHub Copilot in one terminal app
+- **Beautiful TUI**: Rich terminal UI with markdown rendering and syntax highlighting
+- **AI Switching**: Toggle between Claude and Copilot with simple commands
+- **Desktop Integration**: Launch from applications menu with one click
+- **Natural Language**: Ask coding questions in plain English
+- **Command Helper**: Built-in help and command reference
 
 ## 🚀 Quick Start
 
@@ -36,6 +45,37 @@ python server.py
 ```
 
 Server runs on: http://localhost:8002
+
+### Vibe Chat 🎵
+
+1. **Install dependencies:**
+```bash
+pip install httpx rich
+```
+
+2. **Ensure prerequisites:**
+- Claude Code Server running on `localhost:8002`
+- GitHub Copilot CLI installed: `gh extension install github/gh-copilot`
+
+3. **Run Vibe Chat:**
+```bash
+python3 vibe_chat.py
+```
+
+4. **Or launch from desktop:**
+```bash
+# Install desktop launcher
+cp vibe-chat.desktop ~/.local/share/applications/
+update-desktop-database ~/.local/share/applications/
+# Then find "Vibe Chat" in your applications menu
+```
+
+**Commands:**
+- `/claude` - Switch to Claude AI
+- `/copilot` - Switch to GitHub Copilot  
+- `/help` - Show help
+- `/clear` - Clear screen
+- `/quit` - Exit
 
 ### Docker
 
