@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  claude-code-server:
+    build: .
+    container_name: claude-code-server
+    ports:
+      - "8002:8002"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - ENVIRONMENT=production
+      - RATE_LIMIT=100/minute
+      - MAX_TOKENS=4096
+      - ENABLE_METRICS=true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8002/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - claude-network
+
+networks:
+  claude-network:
+    driver: bridge

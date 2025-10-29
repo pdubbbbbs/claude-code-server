@@ -1,0 +1,24 @@
+[Unit]
+Description=Claude Code Server
+After=network.target
+
+[Service]
+Type=simple
+User=me52
+WorkingDirectory=/home/me52/claude-code-server
+Environment="ANTHROPIC_API_KEY=your-api-key-here"
+Environment="ENVIRONMENT=production"
+Environment="RATE_LIMIT=100/minute"
+ExecStart=/usr/bin/python3 /home/me52/claude-code-server/server.py
+Restart=always
+RestartSec=10
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/me52/claude-code-server
+
+[Install]
+WantedBy=multi-user.target
